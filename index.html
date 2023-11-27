@@ -24,10 +24,24 @@
     <button type="button">Finish the experiment</button>
      <script>
 
+        //
+
+        /*
+        extract participant ID
+        */
+        const url_params = new URL(window.location.href).searchParams
+
+        const id = url_params.get('PROLIFIC_PID') || 'unspecified'
+        console.log(`participant id: ${id}`)
+
+        const data = {id: id, passed: true}
+
         const completion_url = 'https://app.prolific.com/submissions/complete?cc=C17RITS5'
         const button = document.querySelector('button')
         button.addEventListener('click', (event) => {
-            console.log('All done')
+            // send the data
+            // on success, redirect
+            window.location.href = completion_url
         })
         
      </script>
